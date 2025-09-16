@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tabela Azul</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e6f0fa; /* azul bem claro */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            background-color: #d0e4ff; /* azul claro */
+            box-shadow: 0 4px 12px rgba(0, 85, 204, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        td {
+            border: 1px solid #7aaeff; /* azul médio para bordas */
+            padding: 14px 25px;
+            text-align: center;
+            color: #003366; /* azul escuro para texto */
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #a9c9ff; /* azul médio */
+        }
+
+        tr:hover {
+            background-color: #7ea9ff; /* azul mais vibrante no hover */
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Linha 1, Coluna 1</td>
+            <td>Linha 1, Coluna 2</td>
+        </tr>
+        <tr>
+            <td>Linha 2, Coluna 1</td>
+            <td>Linha 2, Coluna 2</td>
+        </tr>
+        <tr>
+            <td>Linha 3, Coluna 1</td>
+            <td>Linha 3, Coluna 2</td>
+        </tr>
+    </table>
+</body>
+</html>

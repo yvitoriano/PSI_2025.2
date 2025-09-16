@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela de teste</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f0ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            background-color: #f3e5f5; /* lilás claro */
+            box-shadow: 0 0 10px rgba(155, 89, 182, 0.3);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        td {
+            border: 1px solid #d1c4e9; /* tom lilás mais escuro */
+            padding: 12px 20px;
+            text-align: center;
+            color: #4a148c; /* roxo profundo */
+        }
+
+        tr:nth-child(even) {
+            background-color: #ede7f6; /* linha alternada */
+        }
+
+        tr:hover {
+            background-color: #e1bee7; /* lilás ao passar o mouse */
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Linha 1, Coluna 1</td>
+            <td>Linha 1, Coluna 2</td>
+        </tr>
+        <tr>
+            <td>Linha 2, Coluna 1</td>
+            <td>Linha 2, Coluna 2</td>
+        </tr>
+        <tr>
+            <td>Linha 3, Coluna 1</td>
+            <td><a href="{{url_for('exemplo2')}}">Ir para tabela 2</a></td>
+        </tr>
+    </table>
+    
+</body>
+</html>
