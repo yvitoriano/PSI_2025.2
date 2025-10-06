@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dados Pessoais</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+    <img src="{{url_for('static', filename='img/contato.png')}}" onclick="exibirAlerta()">
+    <script src="{{url_for('static', filename='js/funcoes.js')}}"></script>
     <h2>Nome: {{nome}}</h2>
     <h3>E-mail: {{email}}</h3>
 </body>
