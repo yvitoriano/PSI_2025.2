@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+</head>
+<body>
+    <form action="{{url_for('recebedados')}}" method="post">
+        <label>Nome: </label>
+        <input type="text" name="nome"><br>
+        <label>Telefone: </label>
+        <input type="text" name="telefone"><br>
+        <label >Estado:</label>
+        <select name="estado">
+	        <option value="RN"> Rio Grande do Norte </option>
+	        <option value="PB"> Paraíba </option>
+	        <option value="PE"> Pernambuco</option>
+	        <option value="CE"> Ceará </option>
+        </select><br>
+        <label >Escolaridade:</label><br>
+        <input type="radio" name="formacao" value="fundamental">Ensino Fundamental<br>
+        <input type="radio" name="formacao" value="medio">Ensino Médio<br>
+        <input type="radio" name="formacao" value="superior">Ensino Superior<br>
+        <button type="submit">Enviar</button>
+        <label>Esporte:</label> <br>
+        <input type="checkbox" name="modalidades" value="Natação"> Natação<br>
+        <input type="checkbox" name="modalidades" value="Vôlei"> Vôlei<br>
+        <input type="checkbox" name="modalidades" value="Futebol"> Futebol<br>
+        <input type="checkbox" name="modalidades" value="Judô"> Judô<br>
+    </form>
+</body>
+</html>
