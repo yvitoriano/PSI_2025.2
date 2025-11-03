@@ -48,5 +48,37 @@ def recebedados():
     estado = request.form['estado']
     escolaridade = request.form['formacao']
     return f'{nome}-{telefone}-{estado}-{escolaridade}'
+
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+@app.route('/verificarlogin', methods=['POST'])
+def verificarlogin():
+	login = request.form["login"]
+	senha = request.form["senha"]
+	if login == "admin" and senha == "12345":
+		return 'Seja Bem-vindo Admin!'
+	else:
+		return 'Você não tem permissão para acessar essa página'
+
+@app.route('/verificaridade/<int:idade>')
+def verificaridade(idade):
+    return render_template('verificaridade.html', idade=idade)
+
+@app.route('/usuario/<nome>')
+def usuario(nome):
+	return render_template('usuario.html', nome=nome)
+
+@app.route('/produtos/<int:qtd>')
+def produtos(qtd):
+    return render_template('produtos.html',qtd=qtd)
+
+@app.route('/compras')
+def compras():
+    # itens = ['Arroz', 'Feijão', 'Carne', 'Peixe', 'Frango']
+    itens = request.form.getlist("item")
+    return render_template ("compras.html", itens=itens)
 if __name__ == '__main__':
     app.run()
