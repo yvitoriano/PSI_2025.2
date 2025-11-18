@@ -1,6 +1,23 @@
 from flask import Flask, render_template, request
+from utils import db
+import os 
+from models import Usuario
+from flask_migrate import Migrate
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+db_usuario = os.getenv('DB_USERNAME')
+db_password = os.getenv('DB_PASSWORD')
+db_mydb = os.getenv('DB_DATABASE')
+db_host = os.getenv('DB_HOST')
+db_port = os.getenv('DB_PORT')
+
+conexao = f"mysql+pymysql://{db_usuario}:{db_password}@{db_host}:{db_port}/{db_mydb}"
+app.config['SQLALCHEMY_DATABASE_URI'] = conexao
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db.init_app(app)
+
 
 @app.route('/')
 def index():
@@ -80,5 +97,6 @@ def compras():
     # itens = ['Arroz', 'Feijão', 'Carne', 'Peixe', 'Frango']
     itens = request.form.getlist("item")
     return render_template ("compras.html", itens=itens)
+    
 if __name__ == '__main__':
     app.run()
