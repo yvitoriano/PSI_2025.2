@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request , url_for, redirect
 from utils import db
 import os 
 from models import Usuario
@@ -98,5 +98,34 @@ def compras():
     itens = request.form.getlist("item")
     return render_template ("compras.html", itens=itens)
     
+@app.route('/tarefa')
+def tarefas():
+    tarefas = Tarefa.query.all()
+    return render_template("tarefa.html", tarefas=tarefas)
+
+@app.route('/create', methods=['POST'])
+def create_tarefa():
+    descricao = request.form['descricao']
+    new_tarefa = Tarefa(descricao=descricao)
+    db.Session.add(new_tarefa)
+    db.Session.Commit()
+    return redirect(url_for('tarefa.html'))
+
+@app.route('/update/<int:tarefa_id>', methods['POST'])
+def update_tarefa(tarefa_id):
+    tarefa_obj = Tarefa.query.get(tarefa_id)
+    if tarefa_obj:
+        tarefa_obj.descricao = request.form['descricao']
+        db.Session.Commit()
+    return redirect(url_for('tarefa.html'))
+
+@app.route("/delete/<int:tarefa_id>", methods=['POST'])
+def delete_tarefa(tarefa_id):
+    tarefa_obj = Tarefa.query.get(tarefa_id)
+    if tarefa_obj:
+        db.Session.delete(tarefa_obj)
+        db.Session.Commit()
+    return redirect(url_for('index'))
+
 if __name__ == '__main__':
     app.run()

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aula SQLalchemy</title>
+  </head>
+  <body>
+    {% block conteudo %}
+    <h1>Lista de Tarefas do Dia</h1>
+    
+    <form action="/create" method="POST">
+      <input
+        type="text"
+        name="descricao"
+        placeholder="Nova tarefa"
+        required
+      />
+      <button type="submit">Adicionar</button>
+    </form>
+    
+    <p>Tarefas atuais:</p>
+    <ul>
+      <li> {{tarefa.descricao}}
+        <form action="" method="" style="display: inline;">
+          <input type="text" name="descricao" value="tarefa.descricao"/>
+          <button type="submit">Atualizar</button>
+        </form>
+        
+        <form action="" method="" style="display: inline;">
+          <button type="submit">Excluir</button>
+        </form>
+      </li>
+    </ul>
+    {% endblock %}
+  </body>
+</html>
