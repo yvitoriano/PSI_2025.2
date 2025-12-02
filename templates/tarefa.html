@@ -9,29 +9,32 @@
     {% block conteudo %}
     <h1>Lista de Tarefas do Dia</h1>
     
-    <form action="/create" method="POST">
+    <form action="{{url_for('create_tarefa')}}" method="POST">
       <input
         type="text"
         name="descricao"
         placeholder="Nova tarefa"
         required
-      />
+      /> <br>
+
+      <select name="prioridade" >
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+        
       <button type="submit">Adicionar</button>
     </form>
     
-    <p>Tarefas atuais:</p>
+    <h2>Tarefas atuais:</h2>
     <ul>
-      <li> {{tarefa.descricao}}
-        <form action="" method="" style="display: inline;">
-          <input type="text" name="descricao" value="tarefa.descricao"/>
-          <button type="submit">Atualizar</button>
-        </form>
-        
-        <form action="" method="" style="display: inline;">
-          <button type="submit">Excluir</button>
-        </form>
-      </li>
+      {% for t in tarefas %}
+         <li>{{t.descricao}} - {{t.prioridade}}
+         <a href="{{url_for('delete_tarefa')}}">Excluir</a>
+         </li>
+      {% endfor %}
     </ul>
-    {% endblock %}
   </body>
 </html>

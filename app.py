@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request , url_for, redirect
 from utils import db
 import os 
-from models import Usuario
+from models import Usuario, Tarefa
 from flask_migrate import Migrate
 
 app = Flask(__name__)
@@ -106,10 +106,12 @@ def tarefas():
 @app.route('/create', methods=['POST'])
 def create_tarefa():
     descricao = request.form['descricao']
-    new_tarefa = Tarefa(descricao=descricao)
+    prioridade = request.form['prioridade']
+    new_tarefa = Tarefa(descricao, prioridade)
     db.Session.add(new_tarefa)
+    #Insert into Tarefa (descricao,prioridade) values('f',5)
     db.Session.Commit()
-    return redirect(url_for('tarefa.html'))
+    return 'Dados inseridos com sucesso'
 
 @app.route('/update/<int:tarefa_id>', methods['POST'])
 def update_tarefa(tarefa_id):
@@ -122,10 +124,11 @@ def update_tarefa(tarefa_id):
 @app.route("/delete/<int:tarefa_id>", methods=['POST'])
 def delete_tarefa(tarefa_id):
     tarefa_obj = Tarefa.query.get(tarefa_id)
-    if tarefa_obj:
+    #if tarefa_obj:
         db.Session.delete(tarefa_obj)
         db.Session.Commit()
-    return redirect(url_for('index'))
+    return redirect(url_for('tarefa'))
+
 
 if __name__ == '__main__':
     app.run()

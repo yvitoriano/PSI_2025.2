@@ -17,3 +17,8 @@ class Usuario(db.Model):
 class Tarefa(db.Model):
         id = db.Column(db.Integer, primary_key= True)
         descricao = db.Column(db.string(200), unique=True, nullable=False)
+        prioridade = db.Column(db.Integer)
+        def __init__(self, descricao):
+                self.descricao = descricao
+                self.prioridade = prioridade
+
